@@ -8,7 +8,7 @@
 #		编译workspace
 #			ipa-build  <workspace directory> -w -s <schemeName> [-c <project configuration>] [-n]
 #
-# 参数说明：-c NAME				工程的configuration,默认为Release。
+# 参数说明：-c NAME				编译时的工程configuration类型，有4种类型可选：Debug, AdHoc,Release,Distribution。默认是Release。
 #			-o PATH				生成的ipa文件输出的文件夹（必须为已存在的文件路径）默认为工程根路径下的”build/ipa-build“文件夹中
 #			-t NAME				需要编译的target的名称
 #			-w					编译workspace	

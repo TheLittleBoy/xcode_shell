@@ -42,6 +42,7 @@ if [ $# = 2 ];then
 	build_cmd=${build_cmd}' -c '$2
 fi
 
+build_cmd=${build_cmd}' -n'
 
 #编译工程
 ${build_cmd} 
