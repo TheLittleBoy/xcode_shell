@@ -234,12 +234,15 @@ appname=$(basename ./${appdirname}/*.app)
 target_name=$(echo $appname | awk -F. '{print $1}')
 #app文件中Info.plist文件路径
 app_infoplist_path=${build_path}/${appdirname}/${appname}/Info.plist
+
+echo $app_infoplist_path
+
 #取版本号
-bundleShortVersion=$(/usr/libexec/PlistBuddy -c "print CFBundleShortVersionString" ${app_infoplist_path})
+bundleShortVersion=$(/usr/libexec/PlistBuddy -c "print CFBundleShortVersionString" "${app_infoplist_path}")
 #取build值
-bundleVersion=$(/usr/libexec/PlistBuddy -c "print CFBundleVersion" ${app_infoplist_path})
+bundleVersion=$(/usr/libexec/PlistBuddy -c "print CFBundleVersion" "${app_infoplist_path}")
 #取displayName
-displayName=$(/usr/libexec/PlistBuddy -c "print CFBundleDisplayName" ${app_infoplist_path})
+displayName=$(/usr/libexec/PlistBuddy -c "print CFBundleDisplayName" "${app_infoplist_path}")
 #IPA名称
 ipa_name="${displayName}_${platform_id}_${bundleShortVersion}_${build_config}_${bundleVersion}_$(date +"%Y%m%d")"
 echo $ipa_name

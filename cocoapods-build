@@ -13,10 +13,10 @@
 if [ $# != 2 ] && [ $# != 1 ];then
 	echo "Number of params error! Need one or two params!"
 	echo "1.path of project(necessary) 2.Build Configurations(optional,default is Release)"
-	exit	
+    exit
 elif [ ! -d $1 ];then
 	echo "Params Error!! The first param must be a dictionary."
-	exit	
+	exit
 fi
 
 
@@ -44,7 +44,9 @@ fi
 
 build_cmd=${build_cmd}' -n'
 
+echo $build_cmd
+
 #编译工程
-${build_cmd} 
+${build_cmd}
 
 
