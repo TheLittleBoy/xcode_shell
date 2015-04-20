@@ -6,13 +6,16 @@
 # 作者：ccf
 # E-mail:ccf.developer@gmail.com
 #--------------------------------------------
-
+# 修改日期：2015/04/20
+# 修改人：TheLittleBoy
+# 修改内容：增加编译指定的scheme功能
+#--------------------------------------------
 
 
 #参数判断
-if [ $# != 2 ] && [ $# != 1 ];then
-	echo "Number of params error! Need one or two params!"
-	echo "1.path of project(necessary) 2.Build Configurations(optional,default is Release)"
+if [ $# -lt 1 ];then
+	echo "Number of params error! Need one or more params!"
+	echo "1.path of project(necessary) 2.Build Configurations(optional,default is Release) 3.scheme name (default is project name)"
     exit
 elif [ ! -d $1 ];then
 	echo "Params Error!! The first param must be a dictionary."
@@ -32,13 +35,17 @@ cd $current_path
 #工程绝对路径
 cd $1
 project_path=$(pwd)
+
+if [ $# = 3 ];then
+scheme_name=$3
+else
 #获取工程默认scheme的名字（默认与工程文件名字相同）
 scheme_name=$(echo $(basename ./*.xcodeproj) | awk -F. '{print $1}')
-
+fi
 
 build_cmd=${shell_path}'/ipa-build '${project_path}' -w -s '${scheme_name}
 
-if [ $# = 2 ];then
+if [ $# -gt 1 ];then
 	build_cmd=${build_cmd}' -c '$2
 fi
 
